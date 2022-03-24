@@ -10,13 +10,13 @@
 
 
 int main(int argc, const char * argv[]) {
-  std::string file_in = "IFC file";
-  std::string file_out_obj = "OBJ FILE";
+  std::string file_in = "input.obj";
+  std::string file_out_obj = "output.obj";
 
   // ## Read OBJ file ##
   std::ifstream stream_in;
   stream_in.open(file_in);
-  std::vector<Vertex> vertices;
+  std::vector<Point> vertices;
   std::vector<Face> init_faces;
 
   if (stream_in.is_open()) {

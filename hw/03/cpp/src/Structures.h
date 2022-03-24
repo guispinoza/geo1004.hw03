@@ -12,7 +12,3 @@ struct Object {
     std::string id;
     std::vector<Shell> shells;
 };
-
-struct Vertex {
-    std::string id;
-};
