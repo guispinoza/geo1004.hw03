@@ -1,6 +1,11 @@
 # Prerequisites
 *.d
-
+\hw\03\cpp\.idea
+\hw\03\cpp\cmake-build-debug
+\hw\03\cpp\cmake-build-release
+/hw/03/cpp/.idea
+/hw/03/cpp/cmake-build-debug
+/hw/03/cpp/cmake-build-release
 # Compiled Object files
 *.slo
 *.lo
