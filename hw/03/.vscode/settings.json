@@ -1,0 +1,8 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/cpp",
+    "files.associations": {
+        "vector": "cpp",
+        "chrono": "cpp",
+        "variant": "cpp"
+    }
+}
