@@ -856,6 +856,11 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
   /usr/local/include/CGAL/Fraction_traits.h \
   /usr/local/include/CGAL/Rational_traits.h \
   /usr/local/include/CGAL/is_convertible.h \
+  /usr/local/include/gmpxx.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cfloat \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/float.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/float.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/float.h \
   /usr/local/include/CGAL/Scalar_factor_traits.h \
   /usr/local/include/CGAL/Algebraic_extension_traits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/numeric \
@@ -888,11 +893,16 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
   /usr/local/include/CGAL/Modular_traits.h \
   /usr/local/include/CGAL/Modular_arithmetic/Residue_type.h \
   /usr/local/include/CGAL/tss.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cfloat \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/float.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/float.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/float.h \
   /usr/local/include/CGAL/long_long.h \
+  /usr/local/include/CGAL/gmpxx.h \
+  /usr/local/include/CGAL/mpz_class.h \
+  /usr/local/include/CGAL/gmpxx_coercion_traits.h \
+  /usr/local/include/CGAL/Residue.h \
+  /usr/local/include/CGAL/Quotient.h \
+  /usr/local/include/CGAL/mpq_class.h \
+  /usr/local/include/CGAL/GMPXX_arithmetic_kernel.h \
+  /usr/local/include/CGAL/Arithmetic_kernel/Arithmetic_kernel_base.h \
+  /usr/local/include/CGAL/Get_arithmetic_kernel.h \
   /usr/local/include/CGAL/number_utils_classes.h \
   /usr/local/include/CGAL/kernel_basic.h \
   /usr/local/include/CGAL/kernel_config.h \
@@ -1644,7 +1654,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
   /usr/local/include/CGAL/Homogeneous/PointH2.h \
   /usr/local/include/CGAL/Homogeneous/VectorH2.h \
   /usr/local/include/CGAL/Kernel_d/Cartesian_const_iterator_d.h \
-  /usr/local/include/CGAL/Quotient.h \
   /usr/local/include/CGAL/Homogeneous/predicates_on_pointsH2.h \
   /usr/local/include/CGAL/Homogeneous/Iso_rectangleH2.h \
   /usr/local/include/CGAL/Homogeneous/LineH2.h \
@@ -1677,7 +1686,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
   /usr/local/include/CGAL/Sqrt_extension/Fraction_traits.h \
   /usr/local/include/CGAL/Sqrt_extension/Coercion_traits.h \
   /usr/local/include/CGAL/Sqrt_extension/Modular_traits.h \
-  /usr/local/include/CGAL/Residue.h \
   /usr/local/include/CGAL/Sqrt_extension/Scalar_factor_traits.h \
   /usr/local/include/CGAL/Sqrt_extension/Algebraic_extension_traits.h \
   /usr/local/include/CGAL/Sqrt_extension/Chinese_remainder_traits.h \
@@ -1685,7 +1693,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
   /usr/local/include/CGAL/extended_euclidean_algorithm.h \
   /usr/local/include/CGAL/Sqrt_extension/io.h \
   /usr/local/include/CGAL/Sqrt_extension/Get_arithmetic_kernel.h \
-  /usr/local/include/CGAL/Get_arithmetic_kernel.h \
   /usr/local/include/CGAL/Sqrt_extension/convert_to_bfi.h \
   /usr/local/include/CGAL/convert_to_bfi.h \
   /usr/local/include/CGAL/Cache.h \
@@ -1694,7 +1701,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
   /usr/local/include/CGAL/Sqrt_extension/Eigen_NumTraits.h \
   /usr/local/include/CGAL/MP_Float_impl.h \
   /usr/local/include/CGAL/MP_Float_arithmetic_kernel.h \
-  /usr/local/include/CGAL/Arithmetic_kernel/Arithmetic_kernel_base.h \
   /usr/local/include/CGAL/Lazy_exact_nt.h \
   /usr/local/include/CGAL/Handle.h \
   /usr/local/include/CGAL/Lazy.h \
@@ -3753,8 +3759,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/CGAL/Filtered_kernel/internal/Static_filters/tools.h:
 
-/usr/local/include/CGAL/Filtered_kernel/internal/Static_filters/Static_filters.h:
-
 /usr/local/include/CGAL/Mpzf.h:
 
 /usr/local/include/CGAL/Gmpzf.h:
@@ -3909,12 +3913,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/bmiintrin.h:
 
-/usr/local/include/boost/fusion/sequence/comparison/enable_comparison.hpp:
-
-/usr/local/include/CGAL/Nef_S2/SM_iteration.h:
-
-/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/vpclmulqdqintrin.h:
-
 /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/avxintrin.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/serializeintrin.h:
@@ -4043,10 +4041,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/CGAL/function_objects.h:
 
-/usr/local/include/CGAL/IO/Polyhedron_VRML_2_ostream.h:
-
-/usr/local/include/CGAL/Get_arithmetic_kernel.h:
-
 /usr/local/include/boost/multi_index/indexed_by.hpp:
 
 /usr/local/include/CGAL/Sqrt_extension/Get_arithmetic_kernel.h:
@@ -4106,8 +4100,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/CGAL/Homogeneous/Iso_rectangleH2.h:
 
 /usr/local/include/CGAL/Homogeneous/predicates_on_pointsH2.h:
-
-/usr/local/include/CGAL/Quotient.h:
 
 /usr/local/include/CGAL/Homogeneous/VectorH2.h:
 
@@ -4179,23 +4171,17 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/CGAL/Cartesian_converter_fwd.h:
 
-/usr/local/include/boost/preprocessor/control/limits/while_256.hpp:
-
-/usr/local/include/CGAL/Filtered_predicate.h:
-
 /usr/local/include/boost/archive/detail/abi_prefix.hpp:
 
 /usr/local/include/CGAL/Filtered_kernel_fwd.h:
 
-/usr/local/include/boost/utility/declval.hpp:
+/usr/local/include/CGAL/Kernel/Type_equality_wrapper.h:
 
-/usr/local/include/CGAL/Filtered_kernel.h:
+/usr/local/include/CGAL/transforming_iterator.h:
 
-/usr/local/include/boost/mpl/protect.hpp:
+/usr/local/include/CGAL/Homogeneous/PointH2.h:
 
-/usr/local/include/boost/predef/compiler/microtec.h:
-
-/usr/local/include/CGAL/Kernel/interface_macros.h:
+/usr/local/include/CGAL/Intersections_3/Triangle_3_Triangle_3.h:
 
 /usr/local/include/boost/math/special_functions/detail/bernoulli_details.hpp:
 
@@ -5647,23 +5633,21 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/CGAL/number_utils_classes.h:
 
+/usr/local/include/CGAL/IO/Polyhedron_VRML_2_ostream.h:
+
+/usr/local/include/CGAL/Get_arithmetic_kernel.h:
+
+/usr/local/include/CGAL/mpq_class.h:
+
+/usr/local/include/CGAL/Quotient.h:
+
+/usr/local/include/CGAL/gmpxx.h:
+
 /usr/local/include/boost/fusion/adapted/boost_tuple/detail/at_impl.hpp:
 
 /usr/local/include/boost/container_hash/detail/hash_float.hpp:
 
 /usr/local/include/CGAL/long_long.h:
-
-/usr/local/include/CGAL/Intersections_3/internal/Plane_3_Point_3_intersection.h:
-
-/usr/local/include/CGAL/Kernel_traits.h:
-
-/usr/local/include/boost/fusion/mpl/size.hpp:
-
-/usr/local/include/boost/fusion/adapted/boost_tuple/mpl/clear.hpp:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/float.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cfloat:
 
 /usr/local/include/boost/multiprecision/detail/number_base.hpp:
 
@@ -5760,6 +5744,18 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/CGAL/Needs_parens_as_product.h:
 
 /usr/local/include/CGAL/Scalar_factor_traits.h:
+
+/usr/local/include/CGAL/Intersections_3/internal/Plane_3_Point_3_intersection.h:
+
+/usr/local/include/CGAL/Kernel_traits.h:
+
+/usr/local/include/boost/fusion/mpl/size.hpp:
+
+/usr/local/include/boost/fusion/adapted/boost_tuple/mpl/clear.hpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/float.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cfloat:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_fd_setsize.h:
 
@@ -6009,9 +6005,9 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/CGAL/Is_extended_kernel.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_fd_clr.h:
-
 /usr/local/include/CGAL/Intersections_3/Tetrahedron_3_Triangle_3.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_fd_clr.h:
 
 /usr/local/include/boost/numeric/conversion/detail/conversion_traits.hpp:
 
@@ -6451,12 +6447,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/type_traits/add_const.hpp:
 
-/usr/local/include/CGAL/transforming_iterator.h:
-
-/usr/local/include/CGAL/Homogeneous/PointH2.h:
-
-/usr/local/include/CGAL/Intersections_3/Triangle_3_Triangle_3.h:
-
 /usr/local/include/CGAL/Homogeneous_converter.h:
 
 /usr/local/include/CGAL/Intersections_3/internal/Tetrahedron_3_Triangle_3_do_intersect.h:
@@ -6574,6 +6564,10 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/boost/preprocessor/logical/bitor.hpp:
 
 /usr/local/include/boost/type_traits/is_rvalue_reference.hpp:
+
+/usr/local/include/CGAL/Filtered_predicate.h:
+
+/usr/local/include/boost/preprocessor/control/limits/while_256.hpp:
 
 /usr/local/include/boost/preprocessor/control/detail/while.hpp:
 
@@ -7215,6 +7209,12 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/core/demangle.hpp:
 
+/usr/local/include/CGAL/Kernel/interface_macros.h:
+
+/usr/local/include/boost/mpl/protect.hpp:
+
+/usr/local/include/boost/predef/compiler/microtec.h:
+
 /usr/local/include/CGAL/Nef_3/shell_to_nef_3.h:
 
 /usr/local/include/boost/predef/compiler/llvm.h:
@@ -7430,6 +7430,10 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/boost/none_t.hpp:
 
 /usr/local/include/boost/type_traits/has_nothrow_assign.hpp:
+
+/usr/local/include/CGAL/Filtered_kernel/internal/Static_filters/Static_filters.h:
+
+/usr/local/include/CGAL/mpz_class.h:
 
 /usr/local/include/boost/predef/detail/_cassert.h:
 
@@ -7751,6 +7755,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/assert.h:
 
+/usr/local/include/CGAL/gmpxx_coercion_traits.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/mach/i386/_structs.h:
 
 /usr/local/include/boost/mpl/numeric_cast.hpp:
@@ -7913,6 +7919,14 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/predef/compiler/metaware.h:
 
+/usr/local/include/boost/fusion/sequence/comparison/enable_comparison.hpp:
+
+/usr/local/include/CGAL/Nef_S2/SM_iteration.h:
+
+/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/vpclmulqdqintrin.h:
+
+/usr/local/include/gmpxx.h:
+
 /usr/local/include/boost/mpl/eval_if.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/atomic:
@@ -8002,6 +8016,10 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/boost/mpl/set/aux_/tag.hpp:
 
 /usr/local/include/boost/preprocessor/repetition/detail/for.hpp:
+
+/usr/local/include/CGAL/Filtered_kernel.h:
+
+/usr/local/include/boost/utility/declval.hpp:
 
 /usr/local/include/boost/detail/select_type.hpp:
 
@@ -8215,8 +8233,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/stddef.h:
 
-/usr/local/include/CGAL/Kernel/Type_equality_wrapper.h:
-
 /usr/local/include/CGAL/Box_intersection_d/Box_traits_d.h:
 
 /usr/local/include/CGAL/Intersections_2/Ray_2_Segment_2.h:
@@ -8256,6 +8272,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/CGAL/boost/graph/split_graph_into_polylines.h:
 
 /usr/local/include/boost/preprocessor/arithmetic/dec.hpp:
+
+/usr/local/include/CGAL/GMPXX_arithmetic_kernel.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/functional:
 

@@ -53,6 +53,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/lib/cmake/CGAL/CGAL_SCM.cmake"
   "/usr/local/lib/cmake/CGAL/CGAL_SetupBoost.cmake"
   "/usr/local/lib/cmake/CGAL/CGAL_SetupCGALDependencies.cmake"
+  "/usr/local/lib/cmake/CGAL/CGAL_SetupCGAL_CoreDependencies.cmake"
   "/usr/local/lib/cmake/CGAL/CGAL_SetupGMP.cmake"
   "/usr/local/lib/cmake/CGAL/CGAL_TweakFindBoost.cmake"
   "/usr/local/lib/cmake/CGAL/CGAL_VersionUtils.cmake"

@@ -11,9 +11,9 @@
 		"commands" : 
 		[
 			"add_executable",
+			"target_link_libraries",
 			"include_directories",
-			"include",
-			"set_target_properties"
+			"include"
 		],
 		"files" : 
 		[
@@ -32,32 +32,32 @@
 				"parent" : 0
 			},
 			{
-				"command" : 2,
+				"command" : 1,
 				"file" : 0,
-				"line" : 11,
+				"line" : 10,
 				"parent" : 0
-			},
-			{
-				"file" : 1,
-				"parent" : 2
-			},
-			{
-				"command" : 1,
-				"file" : 1,
-				"line" : 30,
-				"parent" : 3
-			},
-			{
-				"command" : 1,
-				"file" : 1,
-				"line" : 43,
-				"parent" : 3
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 7,
+				"line" : 14,
 				"parent" : 0
+			},
+			{
+				"file" : 1,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 30,
+				"parent" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 43,
+				"parent" : 4
 			}
 		]
 	},
@@ -67,20 +67,32 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6"
+					"fragment" : "-O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6"
 				},
 				{
 					"fragment" : "-std=gnu++17"
 				}
 			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "CGAL_USE_CORE=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "CGAL_USE_GMPXX=1"
+				}
+			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 5,
 					"path" : "/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 6,
+					"isSystem" : true,
 					"path" : "/usr/local/include"
 				}
 			],
@@ -89,7 +101,7 @@
 			{
 				"backtraces" : 
 				[
-					6
+					2
 				],
 				"standard" : "17"
 			},
@@ -105,12 +117,24 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "-O3 -DNDEBUG",
 				"role" : "flags"
 			},
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "/usr/local/lib/libgmpxx.dylib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libmpfr.dylib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/local/lib/libgmp.dylib",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"

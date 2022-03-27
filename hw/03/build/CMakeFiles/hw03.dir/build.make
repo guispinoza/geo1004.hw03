@@ -92,6 +92,9 @@ hw03_EXTERNAL_OBJECTS =
 
 hw03: CMakeFiles/hw03.dir/src/main.cpp.o
 hw03: CMakeFiles/hw03.dir/build.make
+hw03: /usr/local/lib/libgmpxx.dylib
+hw03: /usr/local/lib/libmpfr.dylib
+hw03: /usr/local/lib/libgmp.dylib
 hw03: CMakeFiles/hw03.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable hw03"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hw03.dir/link.txt --verbose=$(VERBOSE)

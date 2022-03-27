@@ -6,11 +6,12 @@
 #include <sstream>
 #include "Structures.h"
 #include "helpstructCGAL.h"
+
 // #include "json.hpp" need to add the json.hpp file
 
 
 int main() {
-  std::string file_in = "../../data/output2x3_guids.obj";
+  std::string file_in = "output2x3_guids.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
 
@@ -27,18 +28,20 @@ int main() {
       std::istringstream iss(line);
       std::string word;
       iss >> word;
-      std::cout << word << std::endl;
       // ## read the objects ##
       if (word == "g") {
-        while (iss >> word) object = Object(word); // stof: converts string to float
-        objects.push_back(object);
+        Object obj;
+        while (iss >> word) obj.id = word; // stof: converts string to float
+        std::vector<Shell> sh;
+        obj.shells = sh;
+        objects.push_back(obj);
       }
 
 
       // ## read the shells ##
       if (word == "s") {
-        while (iss >> word) float s = std::stof(word)); // stof: converts string to float
-        objects[-1].shells.push_back(s);
+        Shell sh;
+        objects.back().shells.push_back(sh);
       }
 
       // ## read the vertices ##
@@ -51,14 +54,29 @@ int main() {
 
       // ## read the faces ##
       if (word == "f") {
-        std::vector<int> index;
-        while (iss >> word) index.push_back(std::stoi(word)-1); //stoi converts str to int // we also substract 1 bc obj starts at 1 indexing and C++ structures start at 0 indexing
-        std::vector<unsigned long> v(index[0], index[1], index[2]);
-        if (index.size() == 3) shells[-1].faces.emplace_back(Face(v));
+        std::vector<unsigned long> v;
+        while (iss >> word) v.push_back(std::stoi(word)-1); //stoi converts str to int // we also substract 1 bc obj starts at 1 indexing and C++ structures start at 0 indexing
+        Face fc = {v};
+        if (v.size() == 3) objects.back().shells.back().faces.push_back(fc);
       }
     }
   }
+  // template <class HDS>
+  // struct Polyhedron_builder : public CGAL::Modifier_base<HDS> {
+  //   std::vector<Point> vertices;
+  //   std::vector<std::vector<unsigned long>> faces;
 
+  //   Polyhedron_builder() {}
+  //   void operator()(HDS& hds) {
+  //     CGAL::Polyhedron_incremental_builder_3<HDS> builder(hds, true);
+  //     std::cout << "building surface with " << vertices.size() << " vertices and " << faces.size() << " faces" << std::endl;
+      
+  //     builder.begin_surface(vertices.size(), faces.size()int mode = RELATIVE_INDEXING));
+  //     for (auto const &vertex: vertices) builder.add_vertex(vertex);
+  //     for (auto const &face: faces) builder.add_facet(face.begin(), face.end());
+  //     builder.end_surface();
+  //   }
+  //};
   // # converting the BIM model to OBJ using IfcConvert;
   // # loading each object in the OBJ file(s) into a CGAL Nef polyhedron;
   // # processing the Nef polyhedra into a single big Nef polyhedron representing the space filled by the building’s floors, walls, windows and so on;

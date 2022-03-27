@@ -6,9 +6,6 @@
 typedef CGAL::Exact_predicates_exact_constructions_kernel Kernel;
 typedef Kernel::Point_3 Point;
 typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
-<<<<<<< Updated upstream
-typedef CGAL::Nef_polyhedron_3<Kernel> Nef_polyhedron;
-=======
 typedef CGAL::Nef_polyhedron_3<Kernel> Nef_polyhedron;
 typedef Polyhedron::HalfedgeDS HalfedgeDS;
 
@@ -42,4 +39,3 @@ polyhedron_builder.faces.back().push_back(...);
 }
 } polyhedron.delegate(polyhedron_builder);
 */
->>>>>>> Stashed changes

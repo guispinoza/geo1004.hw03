@@ -857,6 +857,11 @@ CMakeFiles/hw03.dir/src/main.cpp.o
  /usr/local/include/CGAL/Fraction_traits.h
  /usr/local/include/CGAL/Rational_traits.h
  /usr/local/include/CGAL/is_convertible.h
+ /usr/local/include/gmpxx.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cfloat
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/float.h
+ /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/float.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/float.h
  /usr/local/include/CGAL/Scalar_factor_traits.h
  /usr/local/include/CGAL/Algebraic_extension_traits.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/numeric
@@ -889,11 +894,16 @@ CMakeFiles/hw03.dir/src/main.cpp.o
  /usr/local/include/CGAL/Modular_traits.h
  /usr/local/include/CGAL/Modular_arithmetic/Residue_type.h
  /usr/local/include/CGAL/tss.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/cfloat
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/float.h
- /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/float.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/float.h
  /usr/local/include/CGAL/long_long.h
+ /usr/local/include/CGAL/gmpxx.h
+ /usr/local/include/CGAL/mpz_class.h
+ /usr/local/include/CGAL/gmpxx_coercion_traits.h
+ /usr/local/include/CGAL/Residue.h
+ /usr/local/include/CGAL/Quotient.h
+ /usr/local/include/CGAL/mpq_class.h
+ /usr/local/include/CGAL/GMPXX_arithmetic_kernel.h
+ /usr/local/include/CGAL/Arithmetic_kernel/Arithmetic_kernel_base.h
+ /usr/local/include/CGAL/Get_arithmetic_kernel.h
  /usr/local/include/CGAL/number_utils_classes.h
  /usr/local/include/CGAL/kernel_basic.h
  /usr/local/include/CGAL/kernel_config.h
@@ -1645,7 +1655,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o
  /usr/local/include/CGAL/Homogeneous/PointH2.h
  /usr/local/include/CGAL/Homogeneous/VectorH2.h
  /usr/local/include/CGAL/Kernel_d/Cartesian_const_iterator_d.h
- /usr/local/include/CGAL/Quotient.h
  /usr/local/include/CGAL/Homogeneous/predicates_on_pointsH2.h
  /usr/local/include/CGAL/Homogeneous/Iso_rectangleH2.h
  /usr/local/include/CGAL/Homogeneous/LineH2.h
@@ -1678,7 +1687,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o
  /usr/local/include/CGAL/Sqrt_extension/Fraction_traits.h
  /usr/local/include/CGAL/Sqrt_extension/Coercion_traits.h
  /usr/local/include/CGAL/Sqrt_extension/Modular_traits.h
- /usr/local/include/CGAL/Residue.h
  /usr/local/include/CGAL/Sqrt_extension/Scalar_factor_traits.h
  /usr/local/include/CGAL/Sqrt_extension/Algebraic_extension_traits.h
  /usr/local/include/CGAL/Sqrt_extension/Chinese_remainder_traits.h
@@ -1686,7 +1694,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o
  /usr/local/include/CGAL/extended_euclidean_algorithm.h
  /usr/local/include/CGAL/Sqrt_extension/io.h
  /usr/local/include/CGAL/Sqrt_extension/Get_arithmetic_kernel.h
- /usr/local/include/CGAL/Get_arithmetic_kernel.h
  /usr/local/include/CGAL/Sqrt_extension/convert_to_bfi.h
  /usr/local/include/CGAL/convert_to_bfi.h
  /usr/local/include/CGAL/Cache.h
@@ -1695,7 +1702,6 @@ CMakeFiles/hw03.dir/src/main.cpp.o
  /usr/local/include/CGAL/Sqrt_extension/Eigen_NumTraits.h
  /usr/local/include/CGAL/MP_Float_impl.h
  /usr/local/include/CGAL/MP_Float_arithmetic_kernel.h
- /usr/local/include/CGAL/Arithmetic_kernel/Arithmetic_kernel_base.h
  /usr/local/include/CGAL/Lazy_exact_nt.h
  /usr/local/include/CGAL/Handle.h
  /usr/local/include/CGAL/Lazy.h

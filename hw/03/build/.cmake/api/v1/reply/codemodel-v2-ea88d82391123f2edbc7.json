@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.17"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "Release",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "hw03::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-hw03-Debug-268a98fd8820ee3dad4f.json",
+					"jsonFile" : "target-hw03-Release-72837c54a508b938c04b.json",
 					"name" : "hw03",
 					"projectIndex" : 0
 				}
