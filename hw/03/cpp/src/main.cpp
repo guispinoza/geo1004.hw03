@@ -10,7 +10,7 @@
 
 
 int main() {
-  std::string file_in = "orient_weld_openhouse.obj";
+  std::string file_in = "cube.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
 
@@ -55,50 +55,59 @@ int main() {
         // }
         if (coordinates.size() == 3) vertices.push_back(p);
       }
-
       // ## read the faces ##
       if (word == "f") {
         std::vector<unsigned long> v;
-        while (iss >> word) v.push_back(std::stoi(word)-4); //stoi converts str to int // we also substract 1 bc obj starts at 1 indexing and C++ structures start at 0 indexing
+        while (iss >> word) v.push_back(std::stoi(word)-1); //stoi converts str to int // we also substract 1 bc obj starts at 1 indexing and C++ structures start at 0 indexing
         Face fc = {v};
-        if (v.size() == 3) objects.back().shells.back().faces.push_back(fc);
+        objects.back().shells.back().faces.push_back(fc);
       }
     }
   }
+  std::vector<Nef_polyhedron> polyhedra;
+  for (Object obj : objects) {
+    for (Shell sh : obj.shells) {
+      Polyhedron polyhedron;
+      Polyhedron_builder<Polyhedron::HalfedgeDS> polyhedron_builder;
+      std::unordered_map<int, int> locverts;
+      int locid = 0;
+      std::cout << sh.faces.back().vertices.back() << std::endl;
+      for (Face face: sh.faces) {
+        std::cout << "2" << std::endl;
+        Face locface;
+        for (auto const &globid: face.vertices) {
+          std::cout << globid << std::endl;
+          locverts.insert({globid, locid});
+          locface.vertices.push_back(locverts[globid]);
+          locid = locverts.size(); 
+          }
+        
+        polyhedron_builder.faces.push_back(locface.vertices);
+        // int counter = 0;
+        // for (auto const &vertex: face.vertices) {
 
-  Polyhedron polyhedron;
-  Polyhedron_builder<Polyhedron::HalfedgeDS> polyhedron_builder;
-  std::unordered_map<int, int> locverts;
-  int locid = 0;
-  for (auto const &face: objects.back().shells.back().faces) {
-    Face locface;
-    for (auto const &globid: face.vertices) {
-      locverts.insert({globid, locid});
-      locface.vertices.push_back(locverts[globid]);
-      locid = locverts.size(); 
+        //   polyhedron_builder.vertices.push_back(...);
+        //   polyhedron_builder.faces.back().push_back(...);
+        // }
       }
-    polyhedron_builder.faces.push_back(locface.vertices);
-    // int counter = 0;
-    // for (auto const &vertex: face.vertices) {
-
-    //   polyhedron_builder.vertices.push_back(...);
-    //   polyhedron_builder.faces.back().push_back(...);
-    // }
-  }
-  for (auto&[globid, locid] : locverts) {
-    polyhedron_builder.vertices.push_back(vertices[globid]);
-  }
-  
-  polyhedron.delegate(polyhedron_builder);
-
-  
-  if (polyhedron.is_closed()) {
-    Nef_polyhedron nef_polyhedron(polyhedron); 
-    if(nef_polyhedron.is_simple()) {
-      Polyhedron P;
-      nef_polyhedron.convert_to_polyhedron(P);
-      std::ofstream out("temp.nef3");
-      out << P;
+      for (auto&[globid, locid] : locverts) {
+        std::cout<< "test " << globid << std::endl;
+        polyhedron_builder.vertices.push_back(vertices[globid]);
+        std::cout<< "test2 " << locid << std::endl;
+      }
+      polyhedron.delegate(polyhedron_builder);
+      std::cout << "ok" << std::endl;
+      
+      if (polyhedron.is_closed()) {
+        std::ofstream out("temp.obj");
+        out << polyhedron;
+        Nef_polyhedron nef_polyhedron(polyhedron); 
+        polyhedra.push_back(nef_polyhedron);
+      }
+      else {
+        std::cout << "Unclosed polyhedron" << std::endl;
+      }  
+      std::cout<< "done" << std::endl;   
     }   
   }
 
