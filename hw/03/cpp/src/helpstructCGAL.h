@@ -8,25 +8,26 @@ typedef Kernel::Point_3 Point;
 typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
 typedef CGAL::Nef_polyhedron_3<Kernel> Nef_polyhedron;
 typedef Polyhedron::HalfedgeDS HalfedgeDS;
+typedef Polyhedron::Vertex_iterator Vertex_iterator;
 
 // ## STRUCTURE PROVIDED IN ASSIGNMENT DESCRIPTION ##
-//template <class HDS>
+template <class HDS>
 
-// struct Polyhedron_builder : public CGAL::Modifier_base<HDS> {
-//     std::vector<Point> vertices;
-//     std::vector<std::vector<unsigned long>> faces;
+struct Polyhedron_builder : public CGAL::Modifier_base<HDS> {
+    std::vector<Point> vertices;
+    std::vector<std::vector<unsigned long>> faces;
 
-//     Polyhedron_builder() = default;
-//     void operator()(HDS& hds) {
-//       CGAL::Polyhedron_incremental_builder_3<HDS> builder(hds, true);
-//       std::cout << "building surface with " << vertices.size() << " vertices and " << faces.size() << " faces" << std::endl;
+    Polyhedron_builder() = default;
+    void operator()(HDS& hds) {
+      CGAL::Polyhedron_incremental_builder_3<HDS> builder(hds, true);
+      std::cout << "building surface with " << vertices.size() << " vertices and " << faces.size() << " faces" << std::endl;
 
-//       builder.begin_surface(vertices.size(), faces.size());
-//       for (auto const &vertex: vertices) builder.add_vertex(vertex);
-//       for (auto const &face: faces) builder.add_facet(face.begin(), face.end());
-//       builder.end_surface();
-//     }
-// };
+      builder.begin_surface(vertices.size(), faces.size(), mode = ABSOLUTE_INDEXING);
+      for (auto const &vertex: vertices) builder.add_vertex(vertex);
+      for (auto const &face: faces) builder.add_facet(face.begin(), face.end());
+      builder.end_surface();
+    }
+};
 
 /*
 Polyhedron polyhedron;
