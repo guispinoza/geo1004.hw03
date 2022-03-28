@@ -6,7 +6,6 @@
 #include <sstream>
 #include "Structures.h"
 #include "helpstructCGAL.h"
-#include <CGAL/IO/Nef_polyhedron_iostream_3.h>
 // #include "json.hpp" need to add the json.hpp file
 
 
@@ -78,7 +77,7 @@ int main() {
       locface.vertices.push_back(locverts[globid]);
       locid = locverts.size(); 
       }
-    polyhedron_builder.faces.emplace_back(locface.vertices);
+    polyhedron_builder.faces.push_back(locface.vertices);
     // int counter = 0;
     // for (auto const &vertex: face.vertices) {
 
@@ -87,15 +86,23 @@ int main() {
     // }
   }
   for (auto&[globid, locid] : locverts) {
-    polyhedron_builder.vertices.emplace_back(vertices[globid]);
+    polyhedron_builder.vertices.push_back(vertices[globid]);
   }
   
   polyhedron.delegate(polyhedron_builder);
+
+  
   if (polyhedron.is_closed()) {
-    Nef_polyhedron nef_polyhedron(polyhedron);
-    std::ofstream out("temp.nef3");
-    out << nef_polyhedron;
+    Nef_polyhedron nef_polyhedron(polyhedron); 
+    if(nef_polyhedron.is_simple()) {
+      Polyhedron P;
+      nef_polyhedron.convert_to_polyhedron(P);
+      std::ofstream out("temp.nef3");
+      out << P;
+    }   
   }
+
+  
 
 
 /*  Nef_polyhedron::Volume_const_iterator current_volume;
