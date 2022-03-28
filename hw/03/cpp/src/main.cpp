@@ -6,7 +6,7 @@
 #include <sstream>
 #include "Structures.h"
 #include "helpstructCGAL.h"
-
+#include <CGAL/IO/Nef_polyhedron_iostream_3.h>
 // #include "json.hpp" need to add the json.hpp file
 
 
@@ -69,8 +69,16 @@ int main() {
 
   Polyhedron polyhedron;
   Polyhedron_builder<Polyhedron::HalfedgeDS> polyhedron_builder;
+  std::unordered_map<int, int> locverts;
+  int locid = 0;
   for (auto const &face: objects.back().shells.back().faces) {
-    polyhedron_builder.faces.emplace_back(face.vertices);
+    Face locface;
+    for (auto const &globid: face.vertices) {
+      locverts.insert({globid, locid});
+      locface.vertices.push_back(locverts[globid]);
+      locid = locverts.size(); 
+      }
+    polyhedron_builder.faces.emplace_back(locface.vertices);
     // int counter = 0;
     // for (auto const &vertex: face.vertices) {
 
@@ -78,12 +86,16 @@ int main() {
     //   polyhedron_builder.faces.back().push_back(...);
     // }
   }
-  for (auto const &vert: vertices) {
-    polyhedron_builder.vertices.emplace_back(vert);
+  for (auto&[globid, locid] : locverts) {
+    polyhedron_builder.vertices.emplace_back(vertices[globid]);
   }
   
   polyhedron.delegate(polyhedron_builder);
-  std::cout << polyhedron.size_of_vertices() << std::endl;
+  if (polyhedron.is_closed()) {
+    Nef_polyhedron nef_polyhedron(polyhedron);
+    std::ofstream out("temp.nef3");
+    out << nef_polyhedron;
+  }
 
 
 /*  Nef_polyhedron::Volume_const_iterator current_volume;
