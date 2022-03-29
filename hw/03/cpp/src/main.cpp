@@ -10,7 +10,7 @@
 
 
 int main() {
-  std::string file_in = "output4_guids.obj";
+  std::string file_in = "orient_weld_openhouse.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
 
@@ -97,14 +97,14 @@ int main() {
       polyhedron.delegate(polyhedron_builder);
 
 
-      std::ofstream out("temp.off");
-      out << polyhedron;
+      
 
 
 
       if (polyhedron.is_closed()) {
         Nef_polyhedron nef_polyhedron(polyhedron); 
         polyhedra.push_back(nef_polyhedron);
+        std::cout << "----Closed Polyhedron" << std::endl;
       }
       else {
         std::cout << "Unclosed polyhedron" << std::endl;
@@ -112,8 +112,14 @@ int main() {
     }
   }  
   std::cout<< "done" << std::endl;   
-
-
+  Nef_polyhedron bignef = polyhedra.front();
+  for (Nef_polyhedron np : polyhedra) {
+    bignef = bignef + np;
+  }
+  Polyhedron P;
+  std::ofstream out("bignef.off");
+  bignef.convert_to_polyhedron(P);
+  out << P;
   
 
 
