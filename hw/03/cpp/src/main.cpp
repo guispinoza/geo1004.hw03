@@ -10,7 +10,7 @@
 
 
 int main() {
-  std::string file_in = "cube.obj";
+  std::string file_in = "output4_guids.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
 
@@ -71,14 +71,14 @@ int main() {
       Polyhedron_builder<Polyhedron::HalfedgeDS> polyhedron_builder;
       std::unordered_map<int, int> locverts;
       int locid = 0;
-      std::cout << sh.faces.back().vertices.back() << std::endl;
       for (Face face: sh.faces) {
-        std::cout << "2" << std::endl;
         Face locface;
         for (auto const &globid: face.vertices) {
-          std::cout << globid << std::endl;
           locverts.insert({globid, locid});
           locface.vertices.push_back(locverts[globid]);
+          if (locid < locverts.size()) {
+            polyhedron_builder.vertices.push_back(vertices[globid]);
+          }
           locid = locverts.size(); 
           }
         
@@ -90,26 +90,29 @@ int main() {
         //   polyhedron_builder.faces.back().push_back(...);
         // }
       }
-      for (auto&[globid, locid] : locverts) {
-        std::cout<< "test " << globid << std::endl;
-        polyhedron_builder.vertices.push_back(vertices[globid]);
-        std::cout<< "test2 " << locid << std::endl;
-      }
+      // for (auto&[globid, locid] : locverts) {
+      //   std::cout << globid << " " << locid << std::endl;
+      //   polyhedron_builder.vertices.push_back(vertices[globid]);
+      // }
       polyhedron.delegate(polyhedron_builder);
-      std::cout << "ok" << std::endl;
-      
+
+
+      std::ofstream out("temp.off");
+      out << polyhedron;
+
+
+
       if (polyhedron.is_closed()) {
-        std::ofstream out("temp.obj");
-        out << polyhedron;
         Nef_polyhedron nef_polyhedron(polyhedron); 
         polyhedra.push_back(nef_polyhedron);
       }
       else {
         std::cout << "Unclosed polyhedron" << std::endl;
       }  
-      std::cout<< "done" << std::endl;   
-    }   
-  }
+    }
+  }  
+  std::cout<< "done" << std::endl;   
+
 
   
 
