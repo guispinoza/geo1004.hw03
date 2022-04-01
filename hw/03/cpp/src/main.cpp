@@ -6,11 +6,12 @@
 #include <sstream>
 #include "Structures.h"
 #include "helpstructCGAL.h"
+#include <CGAL/convex_hull_3.h>
 // #include "json.hpp" need to add the json.hpp file
 
 
 int main() {
-  std::string file_in = "orient_weld_openhouse.obj";
+  std::string file_in = "test2.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
 
@@ -65,45 +66,22 @@ int main() {
     }
   }
   std::vector<Nef_polyhedron> polyhedra;
+  std::vector<std::string> polyid;
   for (Object obj : objects) {
     for (Shell sh : obj.shells) {
       Polyhedron polyhedron;
-      Polyhedron_builder<Polyhedron::HalfedgeDS> polyhedron_builder;
-      std::unordered_map<int, int> locverts;
-      int locid = 0;
+      std::vector<Point> verts;
       for (Face face: sh.faces) {
         Face locface;
-        for (auto const &globid: face.vertices) {
-          locverts.insert({globid, locid});
-          locface.vertices.push_back(locverts[globid]);
-          if (locid < locverts.size()) {
-            polyhedron_builder.vertices.push_back(vertices[globid]);
+        for (auto const &id: face.vertices) {
+          verts.push_back(vertices[id]);
           }
-          locid = locverts.size(); 
-          }
-        
-        polyhedron_builder.faces.push_back(locface.vertices);
-        // int counter = 0;
-        // for (auto const &vertex: face.vertices) {
-
-        //   polyhedron_builder.vertices.push_back(...);
-        //   polyhedron_builder.faces.back().push_back(...);
-        // }
       }
-      // for (auto&[globid, locid] : locverts) {
-      //   std::cout << globid << " " << locid << std::endl;
-      //   polyhedron_builder.vertices.push_back(vertices[globid]);
-      // }
-      polyhedron.delegate(polyhedron_builder);
-
-
-      
-
-
-
+      CGAL::convex_hull_3(verts.begin(), verts.end(), polyhedron);
       if (polyhedron.is_closed()) {
         Nef_polyhedron nef_polyhedron(polyhedron); 
         polyhedra.push_back(nef_polyhedron);
+        polyid.push_back(obj.id);
         std::cout << "----Closed Polyhedron" << std::endl;
       }
       else {
@@ -113,12 +91,14 @@ int main() {
   }  
   std::cout<< "done" << std::endl;   
   Nef_polyhedron bignef = polyhedra.front();
-  for (Nef_polyhedron np : polyhedra) {
-    bignef = bignef + np;
+  for (int i=1; i < polyhedra.size(); i++) {
+    bignef += polyhedra[i];
+    std::cout << polyid[i] << std::endl;
   }
+  std::cout << "polyhedra time" << std::endl;
   Polyhedron P;
   std::ofstream out("bignef.off");
-  bignef.convert_to_polyhedron(P);
+  bignef.closure().convert_to_polyhedron(P);
   out << P;
   
 
@@ -135,6 +115,14 @@ int main() {
   }*/
 
   // # writing the geometries to a CityJSON file.
-  
+  // Nef_polyhedron::Volume_const_iterator current_volume;
+  // CGAL_forall_volumes(current_volume, big_nef) {
+  //   Nef_polyhedron::Shell_entry_const_iterator current_shell;
+  //   CGAL_forall_shells_of(current_shell, current_volume) {
+  //     Shell_explorer se;
+  //     Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
+  //     big_nef.visit_shell_objects(sface_in_shell, se);
+  //   }
+  // }
   return 0;
 }

@@ -29,14 +29,17 @@ struct Polyhedron_builder : public CGAL::Modifier_base<HDS> {
     }
 };
 
-/*
-Polyhedron polyhedron;
-Polyhedron_builder<Polyhedron::HalfedgeDS> polyhedron_builder;
-for (auto const &face: ...) {
-polyhedron_builder.faces.emplace_back();
-for (auto const &vertex: face.vertices) {
-polyhedron_builder.vertices.push_back(...);
-polyhedron_builder.faces.back().push_back(...);
-}
-} polyhedron.delegate(polyhedron_builder);
-*/
+struct Shell_explorer {
+    std::vector<Point> vertices;
+    std::vector<std::vector<unsigned long>> faces;
+
+    void visit(Nef_polyhedron::Vertex_const_handle v) {}
+    void visit(Nef_polyhedron::Halfedge_const_handle he) {}
+    void visit(Nef_polyhedron::SHalfedge_const_handle she) {}
+    void visit(Nef_polyhedron::SHalfloop_const_handle shl) {}
+    void visit(Nef_polyhedron::SFace_const_handle sf) {}
+
+    void visit(Nef_polyhedron::Halffacet_const_handle hf) {
+      std::cout <<"ok" <<std::endl;
+    }
+};

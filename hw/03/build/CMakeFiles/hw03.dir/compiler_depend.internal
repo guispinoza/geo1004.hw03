@@ -2780,4 +2780,31 @@ CMakeFiles/hw03.dir/src/main.cpp.o
  /usr/local/include/CGAL/Constrained_Delaunay_triangulation_2.h
  /usr/local/include/CGAL/Triangulation_2/insert_constraints.h
  /usr/local/include/boost/container/flat_set.hpp
+ /usr/local/include/CGAL/convex_hull_3.h
+ /usr/local/include/CGAL/license/Convex_hull_3.h
+ /usr/local/include/CGAL/convex_hull_2.h
+ /usr/local/include/CGAL/license/Convex_hull_2.h
+ /usr/local/include/CGAL/convex_hull_traits_2.h
+ /usr/local/include/CGAL/distance_predicates_2.h
+ /usr/local/include/CGAL/ch_akl_toussaint.h
+ /usr/local/include/CGAL/Convex_hull_2/ch_akl_toussaint_impl.h
+ /usr/local/include/CGAL/convexity_check_2.h
+ /usr/local/include/CGAL/Convex_hull_2/convexity_check_2_impl.h
+ /usr/local/include/CGAL/Convex_hull_2/ch_assertions.h
+ /usr/local/include/CGAL/ch_selected_extreme_points_2.h
+ /usr/local/include/CGAL/Convex_hull_2/ch_selected_extreme_points_2_impl.h
+ /usr/local/include/CGAL/ch_graham_andrew.h
+ /usr/local/include/CGAL/Convex_hull_2/ch_graham_andrew_impl.h
+ /usr/local/include/CGAL/IO/Tee_for_output_iterator.h
+ /usr/local/include/CGAL/ch_bykat.h
+ /usr/local/include/CGAL/Convex_hull_2/ch_bykat_impl.h
+ /usr/local/include/CGAL/Convex_hull_traits_3.h
+ /usr/local/include/CGAL/Convex_hull_face_base_2.h
+ /usr/local/include/CGAL/Convex_hull_vertex_base_2.h
+ /usr/local/include/CGAL/boost/graph/copy_face_graph.h
+ /usr/local/include/boost/iterator/function_output_iterator.hpp
+ /usr/local/include/CGAL/boost/graph/graph_traits_Triangulation_data_structure_2.h
+ /usr/local/include/CGAL/boost/graph/properties_Triangulation_data_structure_2.h
+ /usr/local/include/CGAL/convexity_check_3.h
+ /usr/local/include/CGAL/boost/graph/property_maps.h
 
