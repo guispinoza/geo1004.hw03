@@ -11,7 +11,7 @@
 
 
 int main() {
-  std::string file_in = "test2.obj";
+  std::string file_in = "testduplex.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
 
@@ -98,7 +98,7 @@ int main() {
   std::cout << "polyhedra time" << std::endl;
   Polyhedron P;
   std::ofstream out("bignef.off");
-  bignef.closure().convert_to_polyhedron(P);
+  bignef.convert_to_polyhedron(P);
   out << P;
   
 
@@ -115,14 +115,33 @@ int main() {
   }*/
 
   // # writing the geometries to a CityJSON file.
-  // Nef_polyhedron::Volume_const_iterator current_volume;
-  // CGAL_forall_volumes(current_volume, big_nef) {
-  //   Nef_polyhedron::Shell_entry_const_iterator current_shell;
-  //   CGAL_forall_shells_of(current_shell, current_volume) {
-  //     Shell_explorer se;
-  //     Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
-  //     big_nef.visit_shell_objects(sface_in_shell, se);
-  //   }
-  // }
+  Nef_polyhedron::Volume_const_iterator current_volume;
+  bool first = true;
+  CGAL_forall_volumes(current_volume, bignef) {
+    if (first == true) { //Outer Building
+      Nef_polyhedron::Shell_entry_const_iterator current_shell;
+      CGAL_forall_shells_of(current_shell, current_volume) {
+        Shell_explorer se;
+        Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
+        bignef.visit_shell_objects(sface_in_shell, se);
+      }
+    }
+    else{
+      int counter = 0;
+      Nef_polyhedron::Shell_entry_const_iterator current_shell;
+      CGAL_forall_shells_of(current_shell, current_volume) {
+        counter += 1;
+      }
+      if (counter == 1) { //Inner BuildingRooms
+        CGAL_forall_shells_of(current_shell, current_volume) {
+          Shell_explorer se;
+          Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
+          bignef.visit_shell_objects(sface_in_shell, se);
+        }
+      }
+    first = false;
+    }
+  }
+  std::cout << "done!" << std::endl;
   return 0;
 }
