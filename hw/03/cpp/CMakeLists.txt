@@ -3,7 +3,7 @@ project(geo1004.hw03)
 
 add_executable(hw03 
   src/main.cpp
-)
+        src/writetojson.h)
 set_target_properties(hw03 PROPERTIES 
   CXX_STANDARD 17
 )
@@ -11,6 +11,7 @@ target_link_libraries(hw03 PRIVATE
   CGAL::CGAL CGAL::CGAL_Core
 )
 find_package(CGAL QUIET COMPONENTS Core REQUIRED)
+include_directories( ${CMAKE_SOURCE_DIR}/include/ )
 include(${CGAL_USE_FILE})
 
 # Make the executable a default target to build & run in Visual Studio
