@@ -115,35 +115,28 @@ int main() {
     }
   }*/
 
-  // # writing the geometries to a CityJSON file.
+// # writing the geometries to a CityJSON file.
   Nef_polyhedron::Volume_const_iterator current_volume;
   bool first = true;
   Shell_explorer se;
   CGAL_forall_volumes(current_volume, bignef) {
     if (first == true) { //Outer Building
+      json["CityObjects"]["Building"]["type"] = "Building";
+      json["CityObjects"]["Building"]["attributes"] = nlohmann::json({});
+      json["CityObjects"]["Building"]["children"] = json::array({"BuildingRoom"});
       se.first = true;
       Nef_polyhedron::Shell_entry_const_iterator current_shell;
       CGAL_forall_shells_of(current_shell, current_volume) {
         Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
         bignef.visit_shell_objects(sface_in_shell, se);
       }
-    }
-    else{
-      se.first = false;
-      int counter = 0;
-      Nef_polyhedron::Shell_entry_const_iterator current_shell;
-      CGAL_forall_shells_of(current_shell, current_volume) {
-        counter += 1;
-      }
-      if (counter == 1) { //Inner BuildingRooms
-        CGAL_forall_shells_of(current_shell, current_volume) {
-          Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
-          bignef.visit_shell_objects(sface_in_shell, se);
-        }
-      }
-    first = false;
+      json["CityObjects"]["Building"]["geometry"] = json::array({{"type", "MultiSurface"}, {"lod", "2.2"}, {"Boundaries", se.faces}});
+      json["CityObjects"]["Building"]["geometry"]["semantics"] = json::array({{"surfaces", json::array({{"type", "RoofSurface"},{"type", "WallSurface"},{"type", "GroundSurface"}})},{"values", se.surfsem}});
+      //json["CityObjects"]["Building"]["geometry"]["semantics"]["surfaces"] = ;
+      // json["CityObjects"]["Building"]["geometry"]["semantics"]["values"] = se.surfsem;
     }
   }
+
 
   std::cout << "done!" << std::endl;
   return 0;
