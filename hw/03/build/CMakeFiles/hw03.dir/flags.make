@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/clang++
 CXX_DEFINES = -DCGAL_USE_CORE=1 -DCGAL_USE_GMPXX=1
 
-CXX_INCLUDES = -I"/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build" -isystem /usr/local/include
+CXX_INCLUDES = -I"/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build" -I"/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/cpp/include" -isystem /usr/local/include
 
 CXX_FLAGS = -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++17
 

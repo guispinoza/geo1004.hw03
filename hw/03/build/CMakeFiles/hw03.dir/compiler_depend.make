@@ -2778,8 +2778,69 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
   /usr/local/include/boost/graph/adjacency_iterator.hpp \
   /usr/local/include/CGAL/Constrained_Delaunay_triangulation_2.h \
   /usr/local/include/CGAL/Triangulation_2/insert_constraints.h \
-  /usr/local/include/boost/container/flat_set.hpp
+  /usr/local/include/boost/container/flat_set.hpp \
+  /usr/local/include/CGAL/convex_hull_3.h \
+  /usr/local/include/CGAL/license/Convex_hull_3.h \
+  /usr/local/include/CGAL/convex_hull_2.h \
+  /usr/local/include/CGAL/license/Convex_hull_2.h \
+  /usr/local/include/CGAL/convex_hull_traits_2.h \
+  /usr/local/include/CGAL/distance_predicates_2.h \
+  /usr/local/include/CGAL/ch_akl_toussaint.h \
+  /usr/local/include/CGAL/Convex_hull_2/ch_akl_toussaint_impl.h \
+  /usr/local/include/CGAL/convexity_check_2.h \
+  /usr/local/include/CGAL/Convex_hull_2/convexity_check_2_impl.h \
+  /usr/local/include/CGAL/Convex_hull_2/ch_assertions.h \
+  /usr/local/include/CGAL/ch_selected_extreme_points_2.h \
+  /usr/local/include/CGAL/Convex_hull_2/ch_selected_extreme_points_2_impl.h \
+  /usr/local/include/CGAL/ch_graham_andrew.h \
+  /usr/local/include/CGAL/Convex_hull_2/ch_graham_andrew_impl.h \
+  /usr/local/include/CGAL/IO/Tee_for_output_iterator.h \
+  /usr/local/include/CGAL/ch_bykat.h \
+  /usr/local/include/CGAL/Convex_hull_2/ch_bykat_impl.h \
+  /usr/local/include/CGAL/Convex_hull_traits_3.h \
+  /usr/local/include/CGAL/Convex_hull_face_base_2.h \
+  /usr/local/include/CGAL/Convex_hull_vertex_base_2.h \
+  /usr/local/include/CGAL/boost/graph/copy_face_graph.h \
+  /usr/local/include/boost/iterator/function_output_iterator.hpp \
+  /usr/local/include/CGAL/boost/graph/graph_traits_Triangulation_data_structure_2.h \
+  /usr/local/include/CGAL/boost/graph/properties_Triangulation_data_structure_2.h \
+  /usr/local/include/CGAL/convexity_check_3.h \
+  /usr/local/include/CGAL/boost/graph/property_maps.h \
+  /Users/fabzv/Desktop/Delft/Block\ 3/3D\ modelling/geo1004.hw03/hw/03/cpp/include/json.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/forward_list \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/valarray \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/clocale
 
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/clocale:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/valarray:
+
+/usr/local/include/CGAL/convexity_check_3.h:
+
+/usr/local/include/boost/iterator/function_output_iterator.hpp:
+
+/usr/local/include/CGAL/Convex_hull_face_base_2.h:
+
+/usr/local/include/CGAL/Convex_hull_traits_3.h:
+
+/usr/local/include/CGAL/ch_bykat.h:
+
+/usr/local/include/CGAL/IO/Tee_for_output_iterator.h:
+
+/usr/local/include/CGAL/ch_graham_andrew.h:
+
+/usr/local/include/CGAL/ch_selected_extreme_points_2.h:
+
+/usr/local/include/CGAL/Convex_hull_2/ch_assertions.h:
+
+/usr/local/include/CGAL/convexity_check_2.h:
+
+/usr/local/include/CGAL/license/Convex_hull_2.h:
+
+/usr/local/include/CGAL/license/Convex_hull_3.h:
+
+/usr/local/include/CGAL/convex_hull_3.h:
 
 /usr/local/include/CGAL/Constrained_Delaunay_triangulation_2.h:
 
@@ -2971,6 +3032,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/fusion/algorithm/iteration/fold_fwd.hpp:
 
+/usr/local/include/CGAL/Convex_hull_2/ch_akl_toussaint_impl.h:
+
 /usr/local/include/boost/fusion/mpl/push_front.hpp:
 
 /usr/local/include/boost/fusion/mpl/push_back.hpp:
@@ -3097,6 +3160,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/fusion/view/iterator_range/detail/begin_impl.hpp:
 
+/usr/local/include/CGAL/ch_akl_toussaint.h:
+
 /usr/local/include/boost/fusion/support/detail/index_sequence.hpp:
 
 /usr/local/include/boost/fusion/iterator/distance.hpp:
@@ -3220,6 +3285,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/CGAL/Triangulation_2.h:
 
 /usr/local/include/CGAL/Constrained_triangulation_2.h:
+
+/usr/local/include/CGAL/Convex_hull_2/convexity_check_2_impl.h:
 
 /usr/local/include/CGAL/Nef_3/polygon_mesh_to_nef_3.h:
 
@@ -3719,7 +3786,11 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/type_traits/floating_point_promotion.hpp:
 
+/usr/local/include/CGAL/boost/graph/graph_traits_Triangulation_data_structure_2.h:
+
 /usr/local/include/boost/type_traits/extent.hpp:
+
+/usr/local/include/CGAL/Convex_hull_vertex_base_2.h:
 
 /usr/local/include/boost/type_traits/is_copy_assignable.hpp:
 
@@ -4195,6 +4266,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/CGAL/Intersections_3/Sphere_3_Tetrahedron_3.h:
 
+/usr/local/include/CGAL/Convex_hull_2/ch_graham_andrew_impl.h:
+
 /usr/local/include/CGAL/Triangulation_ds_circulators_2.h:
 
 /usr/local/include/boost/predef/compiler/kai.h:
@@ -4453,6 +4526,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/CGAL/Intersections_2/Circle_2_Ray_2.h:
 
+/usr/local/include/CGAL/Convex_hull_2/ch_bykat_impl.h:
+
 /usr/local/include/boost/predef/platform/ios.h:
 
 /usr/local/include/CGAL/Intersections_2/Bbox_2_Ray_2.h:
@@ -4590,6 +4665,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/CGAL/Distance_2/Ray_2_Triangle_2.h:
 
 /usr/local/include/CGAL/Cartesian/Aff_transformation_3.h:
+
+/usr/local/include/CGAL/Convex_hull_2/ch_selected_extreme_points_2_impl.h:
 
 /usr/local/include/boost/core/use_default.hpp:
 
@@ -5425,6 +5502,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/mpl/list/aux_/O1_size.hpp:
 
+/Users/fabzv/Desktop/Delft/Block\ 3/3D\ modelling/geo1004.hw03/hw/03/cpp/include/json.hpp:
+
 /usr/local/include/boost/mpl/front_fwd.hpp:
 
 /usr/local/include/boost/fusion/adapted/mpl/detail/begin_impl.hpp:
@@ -6107,6 +6186,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/range/has_range_iterator.hpp:
 
+/usr/local/include/CGAL/convex_hull_traits_2.h:
+
 /usr/local/include/boost/range/size.hpp:
 
 /usr/local/include/CGAL/Intersections_2/Circle_2_Circle_2.h:
@@ -6303,6 +6384,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/mpl/iterator_range.hpp:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/forward_list:
+
 /usr/local/include/CGAL/utils.h:
 
 /usr/local/include/boost/mpl/aux_/arg_typedef.hpp:
@@ -6358,6 +6441,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/boost/predef/compiler/gcc_xml.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__debug:
+
+/usr/local/include/CGAL/distance_predicates_2.h:
 
 /usr/local/include/boost/iterator/detail/facade_iterator_category.hpp:
 
@@ -7099,6 +7184,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/config/detail/posix_features.hpp:
 
+/usr/local/include/CGAL/convex_hull_2.h:
+
 /usr/local/include/boost/fusion/sequence/intrinsic/detail/segmented_size.hpp:
 
 /usr/local/include/CGAL/normal_vector_newell_3.h:
@@ -7463,6 +7550,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/predef/compiler/metrowerks.h:
 
+/usr/local/include/CGAL/boost/graph/property_maps.h:
+
 /usr/local/include/boost/fusion/view/joint_view/detail/begin_impl.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_off_t.h:
@@ -7480,6 +7569,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/CGAL/number_utils.h:
 
 /usr/local/include/boost/mpl/aux_/preprocessed/gcc/bind_fwd.hpp:
+
+/usr/local/include/CGAL/boost/graph/copy_face_graph.h:
 
 /usr/local/include/boost/fusion/view/transform_view/detail/at_impl.hpp:
 
@@ -8324,6 +8415,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/CGAL/Intersections_3/internal/Plane_3_Tetrahedron_3_do_intersect.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/__stddef_max_align_t.h:
+
+/usr/local/include/CGAL/boost/graph/properties_Triangulation_data_structure_2.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stddef.h:
 

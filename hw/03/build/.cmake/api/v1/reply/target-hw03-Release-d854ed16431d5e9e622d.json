@@ -55,6 +55,12 @@
 			},
 			{
 				"command" : 2,
+				"file" : 0,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
 				"file" : 1,
 				"line" : 43,
 				"parent" : 4
@@ -92,6 +98,10 @@
 				},
 				{
 					"backtrace" : 6,
+					"path" : "/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/cpp/include"
+				},
+				{
+					"backtrace" : 7,
 					"isSystem" : true,
 					"path" : "/usr/local/include"
 				}
