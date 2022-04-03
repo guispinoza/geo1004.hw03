@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <sstream>
 #include "json.hpp"
 
@@ -16,19 +15,19 @@ void write_to_json() {
   json["transform"]["translate"] = json::array({0.0, 0.0, 0.0});
   json["CityObjects"] = json::object();
 
-  json["CityObjects"]["Duplex"]["type"] = "Building";
-  json["CityObjects"]["Duplex"]["attributes"] = nlohmann::json({});
-  json["CityObjects"]["Duplex"]["children"] = json::array({"Duplex-0"});
-  json["CityObjects"]["Duplex"]["geometry"] = json::array({});
+  json["CityObjects"]["Building"]["type"] = "Building";
+  json["CityObjects"]["Building"]["attributes"] = nlohmann::json({});
+  json["CityObjects"]["Building"]["children"] = json::array({"BuildingRoom"});
+  json["CityObjects"]["Building"]["geometry"] = json::array({});
 
-  json["CityObjects"]["Duplex-0"]["type"] = "BuildingPart";
-  json["CityObjects"]["Duplex-0"]["attributes"] = nlohmann::json({});
-  json["CityObjects"]["Duplex-0"]["parents"] = json::array({"Duplex"});
-  json["CityObjects"]["Duplex-0"]["geometry"] = json::array();
-  json["CityObjects"]["Duplex-0"]["geometry"][0]["type"] = "Solid";
-  json["CityObjects"]["Duplex-0"]["geometry"][0]["lod"] = "2.2";
+  json["CityObjects"]["BuildingRoom"]["type"] = "BuildingRoom";
+  json["CityObjects"]["BuildingRoom"]["attributes"] = nlohmann::json({});
+  json["CityObjects"]["BuildingRoom"]["parents"] = json::array({"Building"});
+  json["CityObjects"]["BuildingRoom"]["geometry"] = json::array();
+  json["CityObjects"]["BuildingRoom"]["geometry"][0]["type"] = "Solid";
+  json["CityObjects"]["BuildingRoom"]["geometry"][0]["lod"] = "2.2";
 
-  json["CityObjects"]["Duplex-0"]["geometry"][0]["boundaries"] = json::array({});
+  json["CityObjects"]["BuildingRoom"]["geometry"][0]["boundaries"] = json::array({});
 
   json["vertices"] = json::array({});
 
