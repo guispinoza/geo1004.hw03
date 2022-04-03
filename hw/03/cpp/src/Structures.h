@@ -1,5 +1,3 @@
-#pragma once
-
 struct Face {
     std::vector<unsigned long> vertices; // indices in a vector of points
 };

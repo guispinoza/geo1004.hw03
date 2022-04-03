@@ -1,0 +1,3 @@
+/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build/CMakeFiles/hw03.dir
+/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build/CMakeFiles/edit_cache.dir
+/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build/CMakeFiles/rebuild_cache.dir
