@@ -9,6 +9,7 @@ typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
 typedef CGAL::Nef_polyhedron_3<Kernel> Nef_polyhedron;
 typedef Polyhedron::HalfedgeDS HalfedgeDS;
 typedef Polyhedron::Vertex_iterator Vertex_iterator;
+typedef Nef_polyhedron::Halffacet_cycle_const_iterator Halffacet_iterator;
 
 struct Shell_explorer {
     bool first; //Check if the current shell is the first shell i.e. the outer shell

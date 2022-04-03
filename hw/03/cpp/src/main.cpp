@@ -8,10 +8,19 @@
 #include "helpstructCGAL.h"
 #include <CGAL/convex_hull_3.h>
 #include <json.hpp>
-// #include "json.hpp" need to add the json.hpp file
+using json = nlohmann::json;
 
 
 int main() {
+  // where to store final file as cityjson & adding the attributes
+  json json;
+  json["type"] = "CityJSON";
+  json["version"] = "1.1";
+  json["transform"] = json::object();
+  json["transform"]["scale"] = json::array({1.0, 1.0, 1.0});
+  json["transform"]["translate"] = json::array({0.0, 0.0, 0.0});
+  json["CityObjects"] = json::object();
+
   std::string file_in = "testduplex.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
@@ -83,7 +92,6 @@ int main() {
         Nef_polyhedron nef_polyhedron(polyhedron); 
         polyhedra.push_back(nef_polyhedron);
         polyid.push_back(obj.id);
-        std::cout << "----Closed Polyhedron" << std::endl;
       }
       else {
         std::cout << "Unclosed polyhedron" << std::endl;
@@ -94,13 +102,7 @@ int main() {
   Nef_polyhedron bignef = polyhedra.front();
   for (int i=1; i < polyhedra.size(); i++) {
     bignef += polyhedra[i];
-    std::cout << polyid[i] << std::endl;
   }
-  std::cout << "polyhedra time" << std::endl;
-  Polyhedron P;
-  std::ofstream out("bignef.off");
-  bignef.convert_to_polyhedron(P);
-  out << P;
   
 
 
@@ -131,7 +133,7 @@ int main() {
         bignef.visit_shell_objects(sface_in_shell, se);
       }
       json["CityObjects"]["Building"]["geometry"] = json::array({{"type", "MultiSurface"}, {"lod", "2.2"}, {"Boundaries", se.faces}});
-      json["CityObjects"]["Building"]["geometry"]["semantics"] = json::array({{"surfaces", json::array({{"type", "RoofSurface"},{"type", "WallSurface"},{"type", "GroundSurface"}})},{"values", se.surfsem}});
+      //json["CityObjects"]["Building"]["geometry"]["semantics"] = json::array({{"surfaces", json::array({{"type", "RoofSurface"},{"type", "WallSurface"},{"type", "GroundSurface"}})},{"values", se.surfsem}});
       //json["CityObjects"]["Building"]["geometry"]["semantics"]["surfaces"] = ;
       // json["CityObjects"]["Building"]["geometry"]["semantics"]["values"] = se.surfsem;
     }
