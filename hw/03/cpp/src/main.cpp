@@ -9,7 +9,40 @@
 #include <CGAL/convex_hull_3.h>
 #include "json.hpp"
 
+
 using json = nlohmann::json;
+
+void write_to_json() {
+  json json;
+  json["type"] = "CityJSON";
+  json["version"] = "1.1";
+  json["transform"] = json::object();
+  json["transform"]["scale"] = json::array({1.0, 1.0, 1.0});
+  json["transform"]["translate"] = json::array({0.0, 0.0, 0.0});
+  json["CityObjects"] = json::object();
+
+  json["CityObjects"]["Building"]["type"] = "Building";
+  json["CityObjects"]["Building"]["attributes"] = nlohmann::json({});
+  json["CityObjects"]["Building"]["children"] = json::array({"BuildingRoom"});
+  json["CityObjects"]["Building"]["geometry"] = json::array({});
+
+  json["CityObjects"]["BuildingRoom"]["type"] = "BuildingRoom";
+  json["CityObjects"]["BuildingRoom"]["attributes"] = nlohmann::json({});
+  json["CityObjects"]["BuildingRoom"]["parents"] = json::array({"Building"});
+  json["CityObjects"]["BuildingRoom"]["geometry"] = json::array();
+  json["CityObjects"]["BuildingRoom"]["geometry"][0]["type"] = "Solid";
+  json["CityObjects"]["BuildingRoom"]["geometry"][0]["lod"] = "2.2";
+
+  json["CityObjects"]["BuildingRoom"]["geometry"][0]["boundaries"] = json::array({});
+
+  json["vertices"] = json::array({});
+
+  std::string json_string = json.dump(2);
+  std::string outputname = "/duplex.city.json";
+  std::ofstream out_stream(OUTPUT_PATH + outputname);
+  out_stream << json_string;
+  out_stream.close();
+}
 
 int main() {
   std::string file_in = "testduplex.obj";
@@ -60,8 +93,7 @@ int main() {
       // ## read the faces ##
       if (word == "f") {
         std::vector<unsigned long> v;
-        while (iss >> word) v.push_back(std::stoi(word) -
-                                        1); //stoi converts str to int // we also substract 1 bc obj starts at 1 indexing and C++ structures start at 0 indexing
+        while (iss >> word) v.push_back(std::stoi(word)-1); //stoi converts str to int // we also substract 1 bc obj starts at 1 indexing and C++ structures start at 0 indexing
         Face fc = {v};
         objects.back().shells.back().faces.push_back(fc);
       }
@@ -69,8 +101,8 @@ int main() {
   }
   std::vector<Nef_polyhedron> polyhedra;
   std::vector<std::string> polyid;
-  for (Object obj: objects) {
-    for (Shell sh: obj.shells) {
+  for (Object obj : objects) {
+    for (Shell sh : obj.shells) {
       Polyhedron polyhedron;
       std::vector<Point> verts;
       for (Face face: sh.faces) {
@@ -85,14 +117,15 @@ int main() {
         polyhedra.push_back(nef_polyhedron);
         polyid.push_back(obj.id);
         std::cout << "----Closed Polyhedron" << std::endl;
-      } else {
+      }
+      else {
         std::cout << "Unclosed polyhedron" << std::endl;
       }
     }
   }
-  std::cout << "done" << std::endl;
+  std::cout<< "done" << std::endl;
   Nef_polyhedron bignef = polyhedra.front();
-  for (int i = 1; i < polyhedra.size(); i++) {
+  for (int i=1; i < polyhedra.size(); i++) {
     bignef += polyhedra[i];
     std::cout << polyid[i] << std::endl;
   }
@@ -102,31 +135,21 @@ int main() {
   bignef.convert_to_polyhedron(P);
   out << P;
 
-
-
-/*  Nef_polyhedron::Volume_const_iterator current_volume;
-  CGAL_forall_volumes(current_volume, big_nef) {
-    Nef_polyhedron::Shell_entry_const_iterator current_shell;
-    CGAL_forall_shells_of(current_shell, current_volume) {
-      Shell_explorer se;
-      Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
-      big_nef.visit_shell_objects(sface_in_shell, se);
-      ...
-    }
-  }*/
-
   // # writing the geometries to a CityJSON file.
   Nef_polyhedron::Volume_const_iterator current_volume;
   bool first = true;
+  Shell_explorer se;
   CGAL_forall_volumes(current_volume, bignef) {
     if (first == true) { //Outer Building
+      se.first = true;
       Nef_polyhedron::Shell_entry_const_iterator current_shell;
       CGAL_forall_shells_of(current_shell, current_volume) {
-        Shell_explorer se;
         Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
         bignef.visit_shell_objects(sface_in_shell, se);
       }
-    } else {
+    }
+    else{
+      se.first = false;
       int counter = 0;
       Nef_polyhedron::Shell_entry_const_iterator current_shell;
       CGAL_forall_shells_of(current_shell, current_volume) {
@@ -134,7 +157,6 @@ int main() {
       }
       if (counter == 1) { //Inner BuildingRooms
         CGAL_forall_shells_of(current_shell, current_volume) {
-          Shell_explorer se;
           Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
           bignef.visit_shell_objects(sface_in_shell, se);
         }
@@ -142,6 +164,7 @@ int main() {
       first = false;
     }
   }
+
   std::cout << "done!" << std::endl;
   return 0;
 }
