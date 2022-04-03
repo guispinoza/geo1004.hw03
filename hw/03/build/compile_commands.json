@@ -1,7 +1,7 @@
 [
 {
   "directory": "/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build",
-  "command": "/usr/bin/clang++ -DCGAL_USE_CORE=1 -DCGAL_USE_GMPXX=1 -I\"/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build\" -isystem /usr/local/include -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++17 -o CMakeFiles/hw03.dir/src/main.cpp.o -c \"/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/cpp/src/main.cpp\"",
+  "command": "/usr/bin/clang++ -DCGAL_USE_CORE=1 -DCGAL_USE_GMPXX=1 -I\"/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/build\" -I\"/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/cpp/include\" -isystem /usr/local/include -O3 -DNDEBUG -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++17 -o CMakeFiles/hw03.dir/src/main.cpp.o -c \"/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/cpp/src/main.cpp\"",
   "file": "/Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/cpp/src/main.cpp"
 }
 ]

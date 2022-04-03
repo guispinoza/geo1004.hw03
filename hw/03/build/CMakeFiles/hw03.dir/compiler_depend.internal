@@ -2807,4 +2807,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o
  /usr/local/include/CGAL/boost/graph/properties_Triangulation_data_structure_2.h
  /usr/local/include/CGAL/convexity_check_3.h
  /usr/local/include/CGAL/boost/graph/property_maps.h
+ /Users/fabzv/Desktop/Delft/Block 3/3D modelling/geo1004.hw03/hw/03/cpp/include/json.hpp
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/forward_list
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/valarray
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/clocale
 

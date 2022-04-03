@@ -7,6 +7,7 @@
 #include "Structures.h"
 #include "helpstructCGAL.h"
 #include <CGAL/convex_hull_3.h>
+#include <json.hpp>
 // #include "json.hpp" need to add the json.hpp file
 
 
@@ -117,16 +118,18 @@ int main() {
   // # writing the geometries to a CityJSON file.
   Nef_polyhedron::Volume_const_iterator current_volume;
   bool first = true;
+  Shell_explorer se;
   CGAL_forall_volumes(current_volume, bignef) {
     if (first == true) { //Outer Building
+      se.first = true;
       Nef_polyhedron::Shell_entry_const_iterator current_shell;
       CGAL_forall_shells_of(current_shell, current_volume) {
-        Shell_explorer se;
         Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
         bignef.visit_shell_objects(sface_in_shell, se);
       }
     }
     else{
+      se.first = false;
       int counter = 0;
       Nef_polyhedron::Shell_entry_const_iterator current_shell;
       CGAL_forall_shells_of(current_shell, current_volume) {
@@ -134,7 +137,6 @@ int main() {
       }
       if (counter == 1) { //Inner BuildingRooms
         CGAL_forall_shells_of(current_shell, current_volume) {
-          Shell_explorer se;
           Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
           bignef.visit_shell_objects(sface_in_shell, se);
         }
@@ -142,6 +144,7 @@ int main() {
     first = false;
     }
   }
+
   std::cout << "done!" << std::endl;
   return 0;
 }

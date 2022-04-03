@@ -2805,8 +2805,16 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
   /usr/local/include/CGAL/boost/graph/graph_traits_Triangulation_data_structure_2.h \
   /usr/local/include/CGAL/boost/graph/properties_Triangulation_data_structure_2.h \
   /usr/local/include/CGAL/convexity_check_3.h \
-  /usr/local/include/CGAL/boost/graph/property_maps.h
+  /usr/local/include/CGAL/boost/graph/property_maps.h \
+  /Users/fabzv/Desktop/Delft/Block\ 3/3D\ modelling/geo1004.hw03/hw/03/cpp/include/json.hpp \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/forward_list \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/valarray \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/clocale
 
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/clocale:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/valarray:
 
 /usr/local/include/CGAL/convexity_check_3.h:
 
@@ -5494,6 +5502,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 
 /usr/local/include/boost/mpl/list/aux_/O1_size.hpp:
 
+/Users/fabzv/Desktop/Delft/Block\ 3/3D\ modelling/geo1004.hw03/hw/03/cpp/include/json.hpp:
+
 /usr/local/include/boost/mpl/front_fwd.hpp:
 
 /usr/local/include/boost/fusion/adapted/mpl/detail/begin_impl.hpp:
@@ -6373,6 +6383,8 @@ CMakeFiles/hw03.dir/src/main.cpp.o: /Users/fabzv/Desktop/Delft/Block\ 3/3D\ mode
 /usr/local/include/boost/lexical_cast/detail/lcast_char_constants.hpp:
 
 /usr/local/include/boost/mpl/iterator_range.hpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/forward_list:
 
 /usr/local/include/CGAL/utils.h:
 
