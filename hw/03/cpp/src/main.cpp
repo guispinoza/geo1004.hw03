@@ -12,6 +12,7 @@
 
 using json = nlohmann::json;
 
+
 void write_to_json() {
   json json;
   json["type"] = "CityJSON";
@@ -39,10 +40,11 @@ void write_to_json() {
 
   std::string json_string = json.dump(2);
   std::string outputname = "/duplex.city.json";
-  std::ofstream out_stream(OUTPUT_PATH + outputname);
+  std::ofstream out_stream("D:/Geomatics/GEO_1004/geo1004.hw03/hw/03/cpp/cmake-build-release" + outputname);
   out_stream << json_string;
   out_stream.close();
 }
+
 
 int main() {
   std::string file_in = "testduplex.obj";
@@ -129,11 +131,6 @@ int main() {
     bignef += polyhedra[i];
     std::cout << polyid[i] << std::endl;
   }
-  std::cout << "polyhedra time" << std::endl;
-  Polyhedron P;
-  std::ofstream out("bignef.off");
-  bignef.convert_to_polyhedron(P);
-  out << P;
 
   // # writing the geometries to a CityJSON file.
   Nef_polyhedron::Volume_const_iterator current_volume;
@@ -161,8 +158,9 @@ int main() {
           bignef.visit_shell_objects(sface_in_shell, se);
         }
       }
-      first = false;
+
     }
+    first = false;
   }
 
   std::cout << "done!" << std::endl;
