@@ -7,42 +7,21 @@ typedef CGAL::Exact_predicates_exact_constructions_kernel Kernel;
 typedef Kernel::Point_3 Point;
 typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
 typedef CGAL::Nef_polyhedron_3<Kernel> Nef_polyhedron;
-typedef Polyhedron::HalfedgeDS HalfedgeDS;
-typedef Polyhedron::Vertex_iterator Vertex_iterator;
+// additional definitions to navigate the half edge data structure
 typedef Nef_polyhedron::Halffacet_cycle_const_iterator Halffacet_iterator;
 
-// ## STRUCTURE PROVIDED IN ASSIGNMENT DESCRIPTION ##
-template <class HDS>
 
-struct Polyhedron_builder : public CGAL::Modifier_base<HDS> {
-    std::vector<Point> vertices;
-    std::vector<std::vector<unsigned long>> faces;
-
-    Polyhedron_builder() = default;
-    void operator()(HDS& hds) {
-      CGAL::Polyhedron_incremental_builder_3<HDS> builder(hds, true);
-      std::cout << "building surface with " << vertices.size() << " vertices and " << faces.size() << " faces" << std::endl;
-
-      builder.begin_surface(vertices.size(), faces.size());
-      for (auto const &vertex: vertices) builder.add_vertex(vertex);
-      for (auto const &face: faces) builder.add_facet(face.begin(), face.end());
-      builder.end_surface();
-    }
-};
 
 struct Shell_explorer {
-    bool first;
-    std::vector<Point> vertices;
+    bool first; // bool to check the first shell we visit
+    std::vector<Point> vertices; // point vector to store the vertices
     std::vector<std::vector<std::vector<unsigned long>>> faces; // contains each individual face
 
-    void visit(Nef_polyhedron::Vertex_const_handle v) {
+    void visit(Nef_polyhedron::Vertex_const_handle v) { // function to visit the vertices in the nef polyhedron and push back to the point vector
       vertices.push_back(v->point());
     }
-    void visit(Nef_polyhedron::Halfedge_const_handle he) {}
-    void visit(Nef_polyhedron::SHalfedge_const_handle she) {}
-    void visit(Nef_polyhedron::SHalfloop_const_handle shl) {}
-    void visit(Nef_polyhedron::SFace_const_handle sf) {}
-    void visit(Nef_polyhedron::Halffacet_const_handle hf) {
+
+    void visit(Nef_polyhedron::Halffacet_const_handle hf) { // function to visit the facets
       std::vector<unsigned long> face; // contains value for the face
       for (Halffacet_iterator it = hf->facet_cycles_begin(); it != hf->facet_cycles_end(); it++) {
         Nef_polyhedron::SHalfedge_const_handle sedge = Nef_polyhedron::SHalfedge_const_handle(it);
