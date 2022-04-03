@@ -12,21 +12,7 @@
 
 using json = nlohmann::json;
 
-
-void write_to_json() {
-  json json;
-  json["type"] = "CityJSON";
-  json["version"] = "1.1";
-  json["transform"] = json::object();
-  json["transform"]["scale"] = json::array({1.0, 1.0, 1.0});
-  json["transform"]["translate"] = json::array({0.0, 0.0, 0.0});
-  json["CityObjects"] = json::object();
-
-  json["CityObjects"]["Building"]["type"] = "Building";
-  json["CityObjects"]["Building"]["attributes"] = nlohmann::json({});
-  json["CityObjects"]["Building"]["children"] = json::array({"BuildingRoom"});
-  json["CityObjects"]["Building"]["geometry"] = json::array({});
-
+/*
   json["CityObjects"]["BuildingRoom"]["type"] = "BuildingRoom";
   json["CityObjects"]["BuildingRoom"]["attributes"] = nlohmann::json({});
   json["CityObjects"]["BuildingRoom"]["parents"] = json::array({"Building"});
@@ -38,18 +24,22 @@ void write_to_json() {
 
   json["vertices"] = json::array({});
 
-  std::string json_string = json.dump(2);
-  std::string outputname = "/duplex.city.json";
-  std::ofstream out_stream("D:/Geomatics/GEO_1004/geo1004.hw03/hw/03/cpp/cmake-build-release" + outputname);
-  out_stream << json_string;
-  out_stream.close();
-}
+ */
+
 
 
 int main() {
   std::string file_in = "testduplex.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
+  // where to store final file
+  json json;
+  json["type"] = "CityJSON";
+  json["version"] = "1.1";
+  json["transform"] = json::object();
+  json["transform"]["scale"] = json::array({1.0, 1.0, 1.0});
+  json["transform"]["translate"] = json::array({0.0, 0.0, 0.0});
+  json["CityObjects"] = json::object();
 
   // ## Read OBJ file ##
   std::ifstream stream_in;
@@ -138,12 +128,16 @@ int main() {
   Shell_explorer se;
   CGAL_forall_volumes(current_volume, bignef) {
     if (first == true) { //Outer Building
+      json["CityObjects"]["Building"]["type"] = "Building";
+      json["CityObjects"]["Building"]["attributes"] = nlohmann::json({});
+      json["CityObjects"]["Building"]["children"] = json::array({"BuildingRoom"});
       se.first = true;
       Nef_polyhedron::Shell_entry_const_iterator current_shell;
       CGAL_forall_shells_of(current_shell, current_volume) {
         Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
         bignef.visit_shell_objects(sface_in_shell, se);
       }
+      json["CityObjects"]["Building"]["geometry"] = json::array({{"type", "MultiSurface"}, {"lod", "2.2"}, {"Boundaries", se.faces}});
     }
     else{
       se.first = false;
@@ -164,5 +158,10 @@ int main() {
   }
 
   std::cout << "done!" << std::endl;
+  std::string json_string = json.dump(2);
+  std::string outputname = "duplex.city.json";
+  std::ofstream out_stream(outputname);
+  out_stream << json_string;
+  out_stream.close();
   return 0;
 }

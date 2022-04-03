@@ -33,7 +33,7 @@ struct Polyhedron_builder : public CGAL::Modifier_base<HDS> {
 struct Shell_explorer {
     bool first;
     std::vector<Point> vertices;
-    std::vector<std::vector<unsigned long>> faces;
+    std::vector<std::vector<std::vector<unsigned long>>> faces; // contains each individual face
 
     void visit(Nef_polyhedron::Vertex_const_handle v) {
       vertices.push_back(v->point());
@@ -43,7 +43,7 @@ struct Shell_explorer {
     void visit(Nef_polyhedron::SHalfloop_const_handle shl) {}
     void visit(Nef_polyhedron::SFace_const_handle sf) {}
     void visit(Nef_polyhedron::Halffacet_const_handle hf) {
-      std::vector<unsigned long> face;
+      std::vector<unsigned long> face; // contains value for the face
       for (Halffacet_iterator it = hf->facet_cycles_begin(); it != hf->facet_cycles_end(); it++) {
         Nef_polyhedron::SHalfedge_const_handle sedge = Nef_polyhedron::SHalfedge_const_handle(it);
         CGAL_assertion(sedge!=0);
@@ -68,6 +68,7 @@ struct Shell_explorer {
 
         }
       }
-      faces.push_back(face);
+      std::vector<std::vector<unsigned long>> facesurf = {face};
+      faces.push_back(facesurf);
     }
 };

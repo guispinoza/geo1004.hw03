@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.17)
 project(geo1004.hw03)
 
 add_executable(hw03 
-  src/main.cpp
-        src/writetojson.h)
+  src/main.cpp)
+
 set_target_properties(hw03 PROPERTIES 
   CXX_STANDARD 17
 )
