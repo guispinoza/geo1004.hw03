@@ -3,33 +3,15 @@
 #include <fstream>
 #include <string>
 #include <vector>
+
 #include "Structures.h"
 #include "helpstructCGAL.h"
 #include <CGAL/convex_hull_3.h>
 #include "json.hpp"
-
-
 using json = nlohmann::json;
-
-/*
-  json["CityObjects"]["BuildingRoom"]["type"] = "BuildingRoom";
-  json["CityObjects"]["BuildingRoom"]["attributes"] = nlohmann::json({});
-  json["CityObjects"]["BuildingRoom"]["parents"] = json::array({"Building"});
-  json["CityObjects"]["BuildingRoom"]["geometry"] = json::array();
-  json["CityObjects"]["BuildingRoom"]["geometry"][0]["type"] = "Solid";
-  json["CityObjects"]["BuildingRoom"]["geometry"][0]["lod"] = "2.2";
-
-  json["CityObjects"]["BuildingRoom"]["geometry"][0]["boundaries"] = json::array({});
-
-  json["vertices"] = json::array({});
-
- */
-
 
 
 int main() {
-  std::string file_in = "testduplex.obj"; // Name of the OBJ file
-
   // where to store final file as cityjson & adding the attributes
   json json;
   json["type"] = "CityJSON";
@@ -38,6 +20,10 @@ int main() {
   json["transform"]["scale"] = json::array({1.0, 1.0, 1.0});
   json["transform"]["translate"] = json::array({0.0, 0.0, 0.0});
   json["CityObjects"] = json::object();
+
+  std::string file_in = "testduplex.obj"; // Name of the OBJ file
+
+
 
   // ## Read OBJ file ##
   std::ifstream stream_in;
@@ -101,7 +87,6 @@ int main() {
         Nef_polyhedron nef_polyhedron(polyhedron);
         polyhedra.push_back(nef_polyhedron);
         polyid.push_back(obj.id);
-        std::cout << "----Closed Polyhedron" << std::endl;
       }
       else {
         std::cout << "Unclosed polyhedron" << std::endl;
@@ -112,7 +97,6 @@ int main() {
   Nef_polyhedron bignef = polyhedra.front();
   for (int i=1; i < polyhedra.size(); i++) {
     bignef += polyhedra[i];
-    std::cout << polyid[i] << std::endl;
   }
 
   // # writing the geometries to a CityJSON file.
@@ -131,6 +115,9 @@ int main() {
         bignef.visit_shell_objects(sface_in_shell, se);
       }
       json["CityObjects"]["Building"]["geometry"] = json::array({{"type", "MultiSurface"}, {"lod", "2.2"}, {"Boundaries", se.faces}});
+      //json["CityObjects"]["Building"]["geometry"]["semantics"] = json::array({{"surfaces", json::array({{"type", "RoofSurface"},{"type", "WallSurface"},{"type", "GroundSurface"}})},{"values", se.surfsem}});
+      //json["CityObjects"]["Building"]["geometry"]["semantics"]["surfaces"] = ;
+      // json["CityObjects"]["Building"]["geometry"]["semantics"]["values"] = se.surfsem;
     }
     else{
       se.first = false;
