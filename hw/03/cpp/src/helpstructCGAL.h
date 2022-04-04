@@ -50,7 +50,7 @@ struct Shell_explorer {
         double zval = CGAL::to_double(znt);
         if (zval > 1e-9) {//Points up -> Roof
           surfsem.push_back(0);
-        } else if (zval < 1e-9) {//Points down -> Floor
+        } else if (zval < -1e-9) {//Points down -> Floor
           surfsem.push_back(2);
         } else {//Points sideways -> Wall
           surfsem.push_back(1);

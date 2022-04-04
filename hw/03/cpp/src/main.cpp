@@ -21,7 +21,7 @@ int main() {
   json["transform"]["translate"] = json::array({0.0, 0.0, 0.0});
   json["CityObjects"] = json::object();
 
-  std::string file_in = "test.obj";
+  std::string file_in = "KIThouse.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
 
@@ -121,7 +121,10 @@ int main() {
   Nef_polyhedron::Volume_const_iterator current_volume;
   bool first = true;
   Shell_explorer se;
+  int roomcounter = 0;
+  std::vector<std::string> children;
   CGAL_forall_volumes(current_volume, bignef) {
+    se.faces.clear();
     if (first == true) { //Outer Building
       json["CityObjects"]["Building"]["type"] = "Building";
       json["CityObjects"]["Building"]["attributes"] = nlohmann::json({});
@@ -132,25 +135,42 @@ int main() {
         Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
         bignef.visit_shell_objects(sface_in_shell, se);
       }
-      //json["CityObjects"]["Building"]["geometry"] = 0;
       json["CityObjects"]["Building"]["geometry"][0] = {{"type", "MultiSurface"}, {"lod", "2.2"}, {"boundaries", se.faces}};
-      // json["CityObjects"]["Building"]["geometry"][0]["semantics"] = {{"surfaces", json::array()},{"values", json::array()}};
-      // json["CityObjects"]["Building"]["geometry"][0]["semantics"]["surfaces"] = json::array({{{"type", "RoofSurface"}},{{"type", "WallSurface"}},{{"type", "FloorSurface"}}});
-      // json["CityObjects"]["Building"]["geometry"][0]["semantics"]["values"] = json::array({se.surfsem});
+      json["CityObjects"]["Building"]["geometry"][0]["semantics"] = {{"surfaces", json::array()},{"values", json::array()}};
+      json["CityObjects"]["Building"]["geometry"][0]["semantics"]["surfaces"] = json::array({{{"type", "RoofSurface"}},{{"type", "WallSurface"}},{{"type", "FloorSurface"}}});
+      json["CityObjects"]["Building"]["geometry"][0]["semantics"]["values"] = se.surfsem;
     }
-    // else {
-
-
-
-    // }
-
-
+    else{
+      se.first = false;
+      int counter = 0;
+      Nef_polyhedron::Shell_entry_const_iterator current_shell;
+      CGAL_forall_shells_of(current_shell, current_volume) {
+        counter += 1;
+      }
+      if (counter == 1) { //Inner BuildingRooms
+        if (roomcounter != 4) {
+          std::string br = "BuildingRoom" + std::to_string(roomcounter);
+          children.push_back(br);
+          roomcounter++;
+          json["CityObjects"][br]["type"] = "BuildingRoom";
+          json["CityObjects"][br]["attributes"] = nlohmann::json({});
+          json["CityObjects"][br]["parents"] = {"Building"};
+          CGAL_forall_shells_of(current_shell, current_volume) {
+            Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
+            bignef.visit_shell_objects(sface_in_shell, se);
+            json["CityObjects"][br]["geometry"][0] = {{"type", "MultiSurface"}, {"lod", "2.2"}, {"boundaries", se.faces}};
+          }
+        }
+      }
+    }
+    first = false;
   }
   std::vector<std::vector<double>> dverts;
   for (Point v : se.vertices) {
     std::vector<double> dv = {CGAL::to_double(v.x()), CGAL::to_double(v.y()), CGAL::to_double(v.z())};
     dverts.push_back(dv);
   }
+  json["CityObjects"]["Building"]["children"] = children;
   json["vertices"] = dverts;
   std::string json_string = json.dump(2);
   std::string outputname = "duplex.city.json";
