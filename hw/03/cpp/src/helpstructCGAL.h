@@ -57,7 +57,7 @@ struct Shell_explorer {
         }
       }
       std::vector<std::vector<unsigned long>> facesurf = {face};
-      faces.push_back(facesurf);
+      faces.push_back({facesurf});
     }
 };
 

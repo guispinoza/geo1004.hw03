@@ -21,7 +21,7 @@ int main() {
   json["transform"]["translate"] = json::array({0.0, 0.0, 0.0});
   json["CityObjects"] = json::object();
 
-  std::string file_in = "testduplex.obj";
+  std::string file_in = "test.obj";
   std::string file_in_4 = "output4_guids";
   std::string file_out_nef = "output_nef";
 
@@ -125,20 +125,38 @@ int main() {
     if (first == true) { //Outer Building
       json["CityObjects"]["Building"]["type"] = "Building";
       json["CityObjects"]["Building"]["attributes"] = nlohmann::json({});
-      json["CityObjects"]["Building"]["children"] = json::array({"BuildingRoom"});
+      //json["CityObjects"]["Building"]["children"] = json::array({"BuildingRoom"});
       se.first = true;
       Nef_polyhedron::Shell_entry_const_iterator current_shell;
       CGAL_forall_shells_of(current_shell, current_volume) {
         Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
         bignef.visit_shell_objects(sface_in_shell, se);
       }
-      json["CityObjects"]["Building"]["geometry"] = json::array({{"type", "MultiSurface"}, {"lod", "2.2"}, {"Boundaries", se.faces}});
-      //json["CityObjects"]["Building"]["geometry"]["semantics"] = json::array({{"surfaces", json::array({{"type", "RoofSurface"},{"type", "WallSurface"},{"type", "GroundSurface"}})},{"values", se.surfsem}});
-      //json["CityObjects"]["Building"]["geometry"]["semantics"]["surfaces"] = ;
-      // json["CityObjects"]["Building"]["geometry"]["semantics"]["values"] = se.surfsem;
+      //json["CityObjects"]["Building"]["geometry"] = 0;
+      json["CityObjects"]["Building"]["geometry"][0] = {{"type", "MultiSurface"}, {"lod", "2.2"}, {"boundaries", se.faces}};
+      // json["CityObjects"]["Building"]["geometry"][0]["semantics"] = {{"surfaces", json::array()},{"values", json::array()}};
+      // json["CityObjects"]["Building"]["geometry"][0]["semantics"]["surfaces"] = json::array({{{"type", "RoofSurface"}},{{"type", "WallSurface"}},{{"type", "FloorSurface"}}});
+      // json["CityObjects"]["Building"]["geometry"][0]["semantics"]["values"] = json::array({se.surfsem});
     }
-  }
+    // else {
 
+
+
+    // }
+
+
+  }
+  std::vector<std::vector<double>> dverts;
+  for (Point v : se.vertices) {
+    std::vector<double> dv = {CGAL::to_double(v.x()), CGAL::to_double(v.y()), CGAL::to_double(v.z())};
+    dverts.push_back(dv);
+  }
+  json["vertices"] = dverts;
+  std::string json_string = json.dump(2);
+  std::string outputname = "duplex.city.json";
+  std::ofstream out_stream(outputname);
+  out_stream << json_string;
+  out_stream.close();
 
   std::cout << "done!" << std::endl;
   return 0;
