@@ -7,8 +7,6 @@ typedef CGAL::Exact_predicates_exact_constructions_kernel Kernel;
 typedef Kernel::Point_3 Point;
 typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
 typedef CGAL::Nef_polyhedron_3<Kernel> Nef_polyhedron;
-typedef Polyhedron::HalfedgeDS HalfedgeDS;
-typedef Polyhedron::Vertex_iterator Vertex_iterator;
 typedef Nef_polyhedron::Halffacet_cycle_const_iterator Halffacet_iterator;
 
 struct Shell_explorer {
@@ -18,11 +16,6 @@ struct Shell_explorer {
     std::vector<int> surfsem; //Stores semantics of outer shell
 
     //Visit functions
-    void visit(Nef_polyhedron::Vertex_const_handle v) {}
-    void visit(Nef_polyhedron::Halfedge_const_handle he) {}
-    void visit(Nef_polyhedron::SHalfedge_const_handle she) {}
-    void visit(Nef_polyhedron::SHalfloop_const_handle shl) {}
-    void visit(Nef_polyhedron::SFace_const_handle sf) {}
     void visit(Nef_polyhedron::Halffacet_const_handle hf) {
       std::vector<unsigned long> face; //Will contain indices of vertices of face
       for (Halffacet_iterator it = hf->facet_cycles_begin(); it != hf->facet_cycles_end(); it++) {
@@ -56,7 +49,7 @@ struct Shell_explorer {
           surfsem.push_back(1);
         }
       }
-      std::vector<std::vector<unsigned long>> facesurf = {face};
+      std::vector<std::vector<unsigned long>> facesurf = {face}; //We store the face inside another vector for city.json, this represents the exterior face
       faces.push_back({facesurf});
     }
 };
