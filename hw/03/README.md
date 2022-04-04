@@ -62,3 +62,4 @@ Or you can download with the zip file, extract and run:
 
 ```
 
+The inserted obj is accessed from the build folder, if this doesn't work change the string file_in to the location of your obj file.
