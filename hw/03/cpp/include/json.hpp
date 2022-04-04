@@ -10009,7 +10009,11 @@ class binary_reader
     {
         if (get_char)
         {
+<<<<<<< Updated upstream
             get();  //
+=======
+            get();  // TODO(niels): may we ignore N here?
+>>>>>>> Stashed changes
         }
 
         if (JSON_HEDLEY_UNLIKELY(!unexpect_eof(input_format_t::ubjson, "value")))
