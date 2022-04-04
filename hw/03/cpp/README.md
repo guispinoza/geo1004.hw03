@@ -32,7 +32,7 @@ Obj file that contains only the roofs, walls and floors of the house. Composed o
 
 **Final CityJSON output file: output.city.json**
 
-The end result when the main.cpp is executed. Consists of a LoD 2.2 type MultiSurface parent Building CityObject enriched with semantics with 4 BuildingRoom(s) children.
+The end result when the main.cpp is executed. Consists of a LoD 2.2 type MultiSurface parent Building CityObject enriched with semantics having 4 BuildingRoom(s) as children.
 
 ## How to build from command line
 
