@@ -10,7 +10,7 @@ The code parses the obj file (KIThouse.obj) and converts it into multiple CGAL P
 ## What files are included?
 **main.cpp**
 
-Main program to be executed, instructions on how to build are provided below.
+Main program to be executed, instructions on how to build are provided below. Parses the OBJ file 
 
 **helpstructCGAL.h**
 
