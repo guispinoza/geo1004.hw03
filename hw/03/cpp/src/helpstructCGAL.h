@@ -7,8 +7,6 @@ typedef CGAL::Exact_predicates_exact_constructions_kernel Kernel;
 typedef Kernel::Point_3 Point;
 typedef CGAL::Polyhedron_3<Kernel> Polyhedron;
 typedef CGAL::Nef_polyhedron_3<Kernel> Nef_polyhedron;
-typedef Polyhedron::HalfedgeDS HalfedgeDS;
-typedef Polyhedron::Vertex_iterator Vertex_iterator;
 typedef Nef_polyhedron::Halffacet_cycle_const_iterator Halffacet_iterator;
 
 // ## STRUCTURE PROVIDED IN ASSIGNMENT DESCRIPTION ##
