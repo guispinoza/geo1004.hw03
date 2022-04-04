@@ -10,11 +10,11 @@ The code parses the obj file (KIThouse.obj) and converts it into multiple CGAL P
 ## What files are included?
 **main.cpp**
 
-Main program to be executed, instructions on how to build are provided below. Parses the OBJ file 
+Main program to be executed, instructions on how to build are provided below. Parses the OBJ, creates vectors for each object and vertices, where the shells are added to a vector of each object and the faces are pushed into a vector of the shell of each object. Creates a CGAL polyhedron for every shells which is then used to generate a ```CGAL::convex_hull_3``` that is used to make the multiple ```CGAL Nef Polyhedron```. This result is combined into a single "Big" Nef Polyhedron, where the ```Shell_explorer``` is used to navigate through the exterior, interior and intermediate volumes of the polyhedron to extract the geometries to be written in the final CityJSON file.
 
 **helpstructCGAL.h**
 
-Consists of CGAL libraries, definitions and a ```shell_explorer``` structure that parses the shells by navigating through the nef polyhedron's facets and stores the indices of the vertices to the facets. 
+Consists of CGAL libraries, definitions and a ```shell_explorer``` structure that parses the shells by navigating through the nef polyhedron's facets, storing the indices of the vertices to the facets and defines semantics. 
 
 **Structures.h**
 
