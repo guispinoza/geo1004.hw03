@@ -3,16 +3,16 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <sstream>
 #include "Structures.h"
 #include "helpstructCGAL.h"
 #include <CGAL/convex_hull_3.h>
 #include <json.hpp>
 using json = nlohmann::json;
 
-
+//start
 int main() {
-  // where to store final file as cityjson & adding the attributes
+
+  //Where to store final file as cityjson & adding the attributes
   json json;
   json["type"] = "CityJSON";
   json["version"] = "1.1";
@@ -22,8 +22,6 @@ int main() {
   json["CityObjects"] = json::object();
 
   std::string file_in = "KIThouse.obj";
-  std::string file_in_4 = "output4_guids";
-  std::string file_out_nef = "output_nef";
 
   // ## Read OBJ file ##
   std::ifstream stream_in;
@@ -59,11 +57,6 @@ int main() {
         std::vector<float> coordinates;
         while (iss >> word) coordinates.push_back(std::stof(word)); // stof: converts string to float
         Point p(coordinates[0], coordinates[1], coordinates[2]);
-        // for (Point ver: vertices) {
-        //   if (ver.x() == coordinates[0] && ver.y() == coordinates[1] && ver.z() == coordinates[2]) {
-        //     std::cout << ver << std::endl;
-        //   }
-        // }
         if (coordinates.size() == 3) vertices.push_back(p);
       }
       // ## read the faces ##
@@ -98,24 +91,14 @@ int main() {
       }  
     }
   }  
-  std::cout<< "done" << std::endl;   
+
+
   Nef_polyhedron bignef = polyhedra.front();
   for (int i=1; i < polyhedra.size(); i++) {
     bignef += polyhedra[i];
   }
   
 
-
-/*  Nef_polyhedron::Volume_const_iterator current_volume;
-  CGAL_forall_volumes(current_volume, big_nef) {
-    Nef_polyhedron::Shell_entry_const_iterator current_shell;
-    CGAL_forall_shells_of(current_shell, current_volume) {
-      Shell_explorer se;
-      Nef_polyhedron::SFace_const_handle sface_in_shell(current_shell);
-      big_nef.visit_shell_objects(sface_in_shell, se);
-      ...
-    }
-  }*/
 
 // # writing the geometries to a CityJSON file.
   Nef_polyhedron::Volume_const_iterator current_volume;
@@ -128,7 +111,6 @@ int main() {
     if (first == true) { //Outer Building
       json["CityObjects"]["Building"]["type"] = "Building";
       json["CityObjects"]["Building"]["attributes"] = nlohmann::json({});
-      //json["CityObjects"]["Building"]["children"] = json::array({"BuildingRoom"});
       se.first = true;
       Nef_polyhedron::Shell_entry_const_iterator current_shell;
       CGAL_forall_shells_of(current_shell, current_volume) {
